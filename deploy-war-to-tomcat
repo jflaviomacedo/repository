@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/javahometech/my-app'
+     git 'https://github.com/jflaviomacedo/repository'
    }
    stage('Compile-Package'){
       // Get maven home path
@@ -8,9 +8,9 @@ node{
       sh "${mvnHome}/bin/mvn package"
    }
    stage('Deploy to Tomcat'){
-    sshagent(['7c4bf10c-ad1d-4685-bd47-47965c6b5cdd']) {
-    sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.4.20.51:/usr/local/tomcat/webapps/juvoweb'
-       }
+      sshagent(['7c4bf10c-ad1d-4685-bd47-47965c6b5cdd']) {
+      sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.4.20.51:/usr/local/tomcat/webapps/juvoweb'
+   }
    }
    stage('Email Notification'){
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
