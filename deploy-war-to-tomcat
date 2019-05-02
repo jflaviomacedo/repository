@@ -9,7 +9,7 @@ node{
       //}
    stage('Deploy to Tomcat'){
       sshagent(['7c4bf10c-ad1d-4685-bd47-47965c6b5cdd']) {
-      sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.4.20.51:/usr/local/tomcat/webapps/juvoweb'
+      sh 'scp -o StrictHostKeyChecking=no target/*.war root@10.4.20.51:/usr/local/tomcat/webapps/'
       }
    }
        //stage('Email Notification'){
